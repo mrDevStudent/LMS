@@ -73,7 +73,7 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             color: var(--text-headings);
-            padding: 20px 0;
+            padding: 0px 0;
             box-shadow: 0 4px 15px var(--shadow-color-soft);
             position: sticky;
             top: 0;
@@ -694,7 +694,57 @@
         @keyframes fadeInSlideDown {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
-        }
+        }	
+		#all-modules-page h2 { /* Main title for all modules page */
+        margin-top: 20px;
+        margin-bottom: 15px;
+        font-size: 2.2em;
+        color: var(--accent-primary); /* Or another distinct color */
+        text-align: center;
+    }
+    #all-modules-page p {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 1.1em;
+        color: var(--text-secondary);
+    }
+
+    .module-download-list {
+        background: var(--bg-glass-light);
+        border-radius: 16px;
+        padding: 30px;
+        margin-top: 20px;
+        border: 1px solid var(--border-glass);
+        box-shadow: 0 4px 20px var(--shadow-color-medium);
+    }
+    .module-download-list h3 {
+        color: var(--accent-secondary);
+        margin-top: 25px;
+        margin-bottom: 15px;
+        border-bottom: 1px solid var(--border-primary);
+        padding-bottom: 8px;
+    }
+    .module-download-list ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    .module-download-list li {
+        padding: 12px 15px;
+        margin-bottom: 8px;
+        background-color: rgba(40, 45, 60, 0.5); /* --bg-glass-light slightly darker */
+        border-radius: 6px;
+        border-left: 4px solid var(--accent-primary); /* Accent line */
+    }
+    .module-download-list li a {
+        text-decoration: none;
+        color: var(--text-primary);
+        font-weight: 500;
+        display: block;
+    }
+    .module-download-list li a:hover {
+        color: var(--accent-primary);
+        text-decoration: underline;
+    }
 
     </style>
 </head>
@@ -816,6 +866,29 @@
                     <!-- Module content will be injected here -->
                 </div>
             </div>
+			
+			<div id="all-modules-page" style="display: none;">
+            <button id="back-to-dashboard-from-all-modules-button" class="button-link" style="margin-bottom: 20px;"> ← Back to Dashboard</button>
+            <h2>All FILDIS Modules (PDF Downloads)</h2>
+            <p>Click on a link below to download the module PDF directly.</p>
+
+            <div class="module-download-list">
+                <h3>Linggo 1 hanggang Linggo 5</h3>
+                <ul id="module-group-1-5">
+                    <!-- Links will be populated by JavaScript -->
+                </ul>
+
+                <h3>Linggo 7 hanggang Linggo 11</h3>
+                <ul id="module-group-7-11">
+                    <!-- Links will be populated by JavaScript -->
+                </ul>
+
+                <h3>Linggo 13 hanggang Linggo 17</h3>
+                <ul id="module-group-13-17">
+                    <!-- Links will be populated by JavaScript -->
+                </ul>
+            </div>
+        </div>
 
         </div>
     </main>
@@ -850,8 +923,12 @@ const users = [
                 title: 'WEEK 1: Ang Filipino Bilang Wikang Pambansa',
                 category: 'language', 
                 description: 'Pagtalakay sa Filipino bilang pambansang wika, kasaysayan, epekto ng multilinggwalismo, at ang Mother-Tongue-Based Multilingual Education.',
-                icon: '🇵🇭', 
+                icon: '🇵🇭',
+                pdfPath: 'MODULES/week1.pdf', // <<< --- ADD THIS LINE (or ensure it's correct)
                 content: `
+                    <p><a href="MODULES/week1.pdf" class="button-link" target="_blank" download="FILDIS_Week1_PambansangWika.pdf">I-download ang Buong Modyul (PDF)</a></p>
+                    <hr style="margin: 20px 0;">
+					
                     <p><em>FILDIS: FILIPINO SA IBAT-IBANG DISIPLINA</em></p>
                     <h4>ANG FILIPINO BILANG WIKANG PAMBANSA</h4>
                     <p>Batay sa awitin na inawit kanina, ano ang kinalaman nito sa pagkakaroon ng maraming wika sa bansang Pilipinas? Ayon kay Roberto T. Anonuevo, Direktor –Heneral ng Komisyon sa Wikang Filipino (2018) Napatunayan ng (wikang) Filipino na kaya itong tanggapin sa iba't ibang rehiyon at gawing katuwang ng wika ng rehiyon dahil ang komposisyon ng Filipino ay hindi nalalayo sa naturang wika. Ayon kay Dr. Ernesto Constantino at Pamela Constantino mayroong 100 wika sa Pilipinas.</p>
@@ -894,7 +971,11 @@ const users = [
                 category: 'language',
                 description: 'Ang papel ng Wikang Filipino sa pang-araw-araw na buhay at sa larangan ng akademiya, kasama ang mga hamon nito.',
                 icon: '🎓',
+                pdfPath: 'MODULES/week2.pdf', // <<< --- ADD THIS LINE (or ensure it's correct)
                 content: `
+                    <p><a href="MODULES/week2.pdf" class="button-link" target="_blank" download="FILDIS_Week1_PambansangWika.pdf">I-download ang Buong Modyul (PDF)</a></p>
+                    <hr style="margin: 20px 0;">
+					
                     <p>Ayon kay G. Eugene Y. Evasco ang anomang wika sa daigdig tulad ng wikang Filipino, ay nalilikha, nililinang, pinagyayaman at hindi lamang basta isinilang. Kaya naman masasabi ring ang wika ay may kakayahang makiangkop sa pagbabagong nagaganap sa lipunang kayang pinagsisilbihan.</p>
                     <p>Malinaw na pinapahayag ni E. Evasco ang kalakasan ng wika pagdating sa usapin ng paggamit dito sa umiiral na buhay ng isang Bansa.</p>
                     <p>Sa Panahon ni dating pangulong Gloria Makapagal-Arroyo ginawa ang Pang-ehekutibo (E.O) 210 na nag-aanyas na ibalik ang Ingles bilang wikang panturo sa bansa. Nilimitahan ang paggamit ng wikang Filipino at itinakda nalamang ito bilang wikang panturo sa mga asignaturang Filipino at araling Panlipunan. Sinusugan pa ito ng kongreso nang ipasa ang House Bill 4701 "Act Prescribing English as Medium of Instruction in the Philippines School".</p>
@@ -929,7 +1010,11 @@ const users = [
                 category: 'research',
                 description: 'Pagsusuri sa gamit ng Filipino sa iba\'t ibang larangan ng pananaliksik, agham, negosyo, edukasyon, at politika.',
                 icon: '🔬',
+                pdfPath: 'MODULES/week3.pdf', // <<< --- ADD THIS LINE (or ensure it's correct)
                 content: `
+                    <p><a href="MODULES/week3.pdf" class="button-link" target="_blank" download="FILDIS_Week1_PambansangWika.pdf">I-download ang Buong Modyul (PDF)</a></p>
+                    <hr style="margin: 20px 0;">
+					
                     <h4>I. PANIMULA</h4>
                     <p>-Maisapraktika at mapaunlad pa ang mga batayang kasanayan sa pananaliksik</p>
                     <h4>FILIPINO BILANG WIKA NG SALIKSIK SA IBA'T IBANG LARANG</h4>
@@ -962,7 +1047,11 @@ const users = [
                 category: 'language',
                 icon: '🔄📱',
                 description: 'Pagsusuri sa pagsasalin ng mga terminong Ingles sa iba\'t ibang larangan patungong Filipino, at pagtalakay sa mga salitang umusbong mula sa Social Media.',
+                pdfPath: 'MODULES/week4.pdf', // <<< --- ADD THIS LINE (or ensure it's correct)
                 content: `
+                    <p><a href="MODULES/week4.pdf" class="button-link" target="_blank" download="FILDIS_Week1_PambansangWika.pdf">I-download ang Buong Modyul (PDF)</a></p>
+                    <hr style="margin: 20px 0;">
+					
                     <p><em>FILDIS: FILIPINO SA IBAT-IBANG DISIPLINA</em></p>
                     <h4>MGA TERMINONG INGLES MULA SA IBA’T IBANG LARANGAN ISINALIN SA FILIPINO</h4>
                     <p>Isa sa mga dapat gawin upang makapanaliksik sa Filipino ay ang bigyang-malasakit ang mga teminong Ingles para sa iba’t ibang larangan na isinalin sa Filipino. Narito ang ilang halimbawa ng mungkahing termino.</p>
@@ -1119,7 +1208,11 @@ const users = [
                 category: 'socio',
                 description: 'Ang kalagayan ng industriyalisasyon sa Pilipinas, mga yaman, potensyal, balakid, at ang papel ng agham at teknolohiya.',
                 icon: '🏭',
+                pdfPath: 'MODULES/week4.pdf', // <<< --- ADD THIS LINE (or ensure it's correct)
                 content: `
+                    <p><a href="MODULES/week5.pdf" class="button-link" target="_blank" download="FILDIS_Week1_PambansangWika.pdf">I-download ang Buong Modyul (PDF)</a></p>
+                    <hr style="margin: 20px 0;">
+					
                     <p>Sa proseso ng pagtatatag at pagpapaunlad ng mga industriya na magpapasigla sa ekonomiya at tutustos sa pang-ekonomiyang pangangailangan ng isang bansa. Tungo sa transformasyon ng ekonomiya mula agrarian patungong industriyal.</p>
                     <h5>Mabibigat na industriya</h5>
                     <p>salik sa paglikha ng mga makina at sangkap sa produksyon</p>
@@ -1160,7 +1253,11 @@ const users = [
                 category: 'humanities',
                 icon: '🎵',
                 description: 'Pagsusuri sa mga liriko ni Gary Granada bilang repleksyon ng pulitika, nasyonalismo, at kalagayan ng bansa.',
+                pdfPath: 'MODULES/week4.pdf', // <<< --- ADD THIS LINE (or ensure it's correct)
                 content: `
+                    <p><a href="MODULES/week7.pdf" class="button-link" target="_blank" download="FILDIS_Week1_PambansangWika.pdf">I-download ang Buong Modyul (PDF)</a></p>
+                    <hr style="margin: 20px 0;">
+					
                     <h4>1.1 Maunawaan ang mga liriko ni Garry Granada</h4>
                     <p>Sa usapin ng sining ay nakaagapay ang wikang Filpino, Damang-dama ng mga mamayang Pilipino ang mga awiting pinoy na tumatatak hindi lamang sa isipan bagkos maging sa puso ng mga Pilipino.</p>
                     <p>Isa ang awiting “Anak” ni Freddie Aguilar na sumikat hindi lamang sa Pilipinas kundi pati sa ibang bansa, nag karoon pa ito ng mga salin sa iba't ibang wika sa mundo</p>
@@ -1190,7 +1287,10 @@ const users = [
                 category: 'socio',
                 icon: '🌾',
                 description: 'Pagsusuri sa kalagayang agraryo sa Pilipinas, mga isyu sa lupa, at ang kalagayan ng mga magsasaka.',
+                pdfPath: 'MODULES/week4.pdf', // <<< --- ADD THIS LINE (or ensure it's correct)
                 content: `
+                    <p><a href="MODULES/week8.pdf" class="button-link" target="_blank" download="FILDIS_Week1_PambansangWika.pdf">I-download ang Buong Modyul (PDF)</a></p>
+                    <hr style="margin: 20px 0;">
                     <h4>4.1 Maunawaan ang kalagayan ng Agraryo sa Pilipinas</h4>
                     <h5>FILIPINO SA USAPING AGRARYO</h5>
                     <p>Hindi magpapahuli ang isyung pang-agraryo sa paggamit ng wikang Filipino sapagkat ang masang maralita at mga magsasaka ay pawang sa wikang ito nakapaghahayag ng saloobin.</p>
@@ -1222,7 +1322,10 @@ const users = [
                 category: 'socio',
                 icon: '🏥',
                 description: 'Ang kahalagahan ng paggamit ng Wikang Filipino sa iba\'t ibang serbisyong panlipunan, tulad ng sa mga ospital at edukasyon.',
+                pdfPath: 'MODULES/week4.pdf', // <<< --- ADD THIS LINE (or ensure it's correct)
                 content: `
+                    <p><a href="MODULES/week9.pdf" class="button-link" target="_blank" download="FILDIS_Week1_PambansangWika.pdf">I-download ang Buong Modyul (PDF)</a></p>
+                    <hr style="margin: 20px 0;">
                     <h4>4.1 Maunawaan ang halaga ng paggamit ng wikang Filipino sa iba pang larang</h4>
                     <h5>FILIPINO SA SERBISYONG PANLIPUNAN</h5>
                     <p>Naturingang may sariling wika ang Pilipinas na ipinagmamalaki at ibinabandila tuwing buwan ng Agosto, Ang Wikang Filipino. Nakakatawang isipin, sa pagbibiyahe patungong ibang bansa wala namang masama sa mga tinuring sa itaas, ngunit sana man lamang ay madama ng mga taga ibang bayan ang pagpapahalaga ng mga Pilipino sa sariling wika.</p>
@@ -1248,7 +1351,11 @@ const users = [
                 category: 'tech',
                 icon: '💼',
                 description: 'Paggamit ng Wikang Filipino sa mga espesyalisadong larangan tulad ng akawnting, literatura, inhinyerang sibil, at medisina.',
+                pdfPath: 'MODULES/week4.pdf', // <<< --- ADD THIS LINE (or ensure it's correct)
                 content: `
+                    <p><a href="MODULES/week10.pdf" class="button-link" target="_blank" download="FILDIS_Week1_PambansangWika.pdf">I-download ang Buong Modyul (PDF)</a></p>
+                    <hr style="margin: 20px 0;">
+					
                     <h4>4.1 Maunawaan ang halaga ng paggamit ng wikang Filipino sa iba pang larang</h4>
                     <h5>WIKANG FILIPINO SA AKAWNTING</h5>
                     <p>Ang posibilidad ng Paggamit ng Librong Nakasulat sa Wikang Filipino sa Pagtuturo ng Accounting Ni Patrick M. Malabo.</p>
@@ -1290,7 +1397,11 @@ const users = [
                 category: 'research',
                 icon: '✍️',
                 description: 'Pokus sa mga pangunahing kasanayan sa pananaliksik: pagsasalin, paglalagom, pagpili ng paksa, at format ng pananaliksik.',
+                pdfPath: 'MODULES/week4.pdf', // <<< --- ADD THIS LINE (or ensure it's correct)
                 content: `
+                    <p><a href="MODULES/week11.pdf" class="button-link" target="_blank" download="FILDIS_Week1_PambansangWika.pdf">I-download ang Buong Modyul (PDF)</a></p>
+                    <hr style="margin: 20px 0;">
+					
                     <h4>MGA BATAYANG KASANAYAN SA PANANALIKSIK</h4>
                     <h5>Kasanayan sa Pagsasalin</h5>
                     <p>Dahil sa karamihan ng mga dokumento at siyentipikong pag-aaral ay naggaling sa mga mauunlad na bansa, isa samga nagiging kahingian ay ang pagsasalin ng mga ito sa Filipino nang sa gayon ay maging bahagi ito ng pagpapalakaw ng saliksik sa bansang Pilipinas. Nilagom ni Karen San Diego (2014) sa kaniyang isinasagawang pag-aaral hinggil sa pagsasalin wika na hinggil sa labing-walaong (18) paraan ng pagsasalin ni Peter Newman (1988) mula sa aklat na A textbook of Transnlation.</p>
@@ -1367,7 +1478,11 @@ const users = [
                 category: 'research',
                 icon: '✍️',
                 description: 'Pagtalakay sa mga batayang kasanayan sa pananaliksik: Kasanayan sa Pagsasalin, Paglalagom at Pagpaparapreys, Pagpili ng Paksa, Pagsasaayos ng Paksa, at karaniwang format ng kwantitatibong pananaliksik.',
+                pdfPath: 'MODULES/week4.pdf', // <<< --- ADD THIS LINE (or ensure it's correct)
                 content: `
+                    <p><a href="MODULES/week13.pdf" class="button-link" target="_blank" download="FILDIS_Week1_PambansangWika.pdf">I-download ang Buong Modyul (PDF)</a></p>
+                    <hr style="margin: 20px 0;">
+					
                     <p><em>Filipino sa Iba’t ibang Disiplina - FILDIS</em></p>
                     <h4>PAG-UNLAD PANGKAALAMAN</h4>
                     
@@ -1492,7 +1607,11 @@ const users = [
                 category: 'research',
                 icon: '📜',
                 description: 'Pag-unawa sa iba\'t ibang uri ng pananaliksik (Applied, Pure, Empirical) at mga pamamaraan (Deskriptibo, Historikal, Eksperimental, Etnograpiko), at ang halaga ng pananaliksik.',
+                pdfPath: 'MODULES/week4.pdf', // <<< --- ADD THIS LINE (or ensure it's correct)
                 content: `
+                    <p><a href="MODULES/week14.pdf" class="button-link" target="_blank" download="FILDIS_Week1_PambansangWika.pdf">I-download ang Buong Modyul (PDF)</a></p>
+                    <hr style="margin: 20px 0;">
+					
                     <p><em>Filipino sa Iba’t ibang Disiplina - FILDIS</em></p>
                     <h4>PAG-UNLAD PANGKAALAMAN</h4>
                     
@@ -1549,7 +1668,11 @@ const users = [
                 category: 'research',
                 icon: '🧠',
                 description: 'Pagtalakay sa mga dulog at teorya sa pananaliksik (Dating, Bakod-Bukod-Buklod, Pagbaklas/Pagbagtas, Pantayong Pananaw, Pagdalumat-Salita) at mga batayang kaalaman sa metodolohiya sa pananaliksik panlipunan.',
+                pdfPath: 'MODULES/week4.pdf', // <<< --- ADD THIS LINE (or ensure it's correct)
                 content: `
+                    <p><a href="MODULES/week15.pdf" class="button-link" target="_blank" download="FILDIS_Week1_PambansangWika.pdf">I-download ang Buong Modyul (PDF)</a></p>
+                    <hr style="margin: 20px 0;">
+					
                     <p><em>Filipino sa Iba’t ibang Disiplina - FILDIS</em></p>
                     <h4>PAG-UNLAD PANGKAALAMAN</h4>
 
@@ -1636,7 +1759,11 @@ const users = [
                 category: 'research',
                 icon: '👥',
                 description: 'Pagtalakay sa iba\'t ibang metodolohiya sa pananaliksik panlipunan: Case Study, Etnograpiya, Penomenolohiya, Analisis ng Nilalaman at Diskurso, Impak Asesment, SWOT, Historikal, Kasaysayang Pasalita, Grounded Theory, Pagmamapang Kultural, Holistiko, Feminista, Pagbuo ng Teorya, Diplomatik, Pagdebelop ng Grounded Theory, at Arkival.',
+                pdfPath: 'MODULES/week4.pdf', // <<< --- ADD THIS LINE (or ensure it's correct)
                 content: `
+                    <p><a href="MODULES/week16.pdf" class="button-link" target="_blank" download="FILDIS_Week1_PambansangWika.pdf">I-download ang Buong Modyul (PDF)</a></p>
+                    <hr style="margin: 20px 0;">
+					
                     <p><em>Filipino sa Iba’t ibang Disiplina - FILDIS</em></p>
                     <h4>PAG-UNLAD PANGKAALAMAN</h4>
 
@@ -1759,7 +1886,11 @@ const users = [
                 category: 'research',
                 icon: '🛠️',
                 description: 'Pagtalakay sa mga pangunahing instrumento sa pangangalap ng datos sa pananaliksik: Ang Pakikipanayam (Interbyu), Focus Group Discussion (FGD), at Community Discussion Forums.',
+                pdfPath: 'MODULES/week17.pdf', // <<< --- ADD THIS LINE (or ensure it's correct)
                 content: `
+                    <p><a href="MODULES/week1.pdf" class="button-link" target="_blank" download="FILDIS_Week1_PambansangWika.pdf">I-download ang Buong Modyul (PDF)</a></p>
+                    <hr style="margin: 20px 0;">
+					
                     <p><em>Filipino sa Iba’t ibang Disiplina - FILDIS</em></p>
                     <h4>PAG-UNLAD PANGKAALAMAN</h4>
 
@@ -1787,8 +1918,7 @@ const users = [
             }
         ];
         
-        // Remove the old standalone research modules as their content is now integrated into Weeks 13, 14, 15
-        const idsToRemove = ['pananaliksik_uri_pamamaraan', 'pananaliksik_dulog_teorya_metodolohiya', 'pananaliksik_instrumento'];
+       const idsToRemove = ['pananaliksik_uri_pamamaraan', 'pananaliksik_dulog_teorya_metodolohiya', 'pananaliksik_instrumento'];
         modulesData = modulesData.filter(module => !idsToRemove.includes(module.id));
 
 
@@ -1803,6 +1933,7 @@ const users = [
         const studentDashboard = document.getElementById('student-dashboard');
         const teacherDashboard = document.getElementById('teacher-dashboard');
         const moduleViewPage = document.getElementById('module-view-page');
+        const allModulesPage = document.getElementById('all-modules-page'); // New
 
         const loginForm = document.getElementById('login-form');
         const registerStudentForm = document.getElementById('register-student-form');
@@ -1818,6 +1949,10 @@ const users = [
         const moduleViewContent = document.getElementById('module-view-content');
         const backToDashboardButton = document.getElementById('back-to-dashboard-button');
         const scrollToTopButton = document.getElementById('scroll-to-top');
+        const backToDashboardFromAllModulesButton = document.getElementById('back-to-dashboard-from-all-modules-button'); // New
+        const moduleGroup1to5List = document.getElementById('module-group-1-5'); // New
+        const moduleGroup7to11List = document.getElementById('module-group-7-11'); // New
+        const moduleGroup13to17List = document.getElementById('module-group-13-17'); // New
 
 
         let currentUser = null;
@@ -1832,33 +1967,101 @@ const users = [
             }
         }
 
-
         function showPage(pageElement, navLinkToActivate = null) {
             homePage.style.display = 'none';
             loginPage.style.display = 'none';
             studentDashboard.style.display = 'none';
             teacherDashboard.style.display = 'none';
             moduleViewPage.style.display = 'none';
-            
+            allModulesPage.style.display = 'none'; // Hide the new page too
+
             if (pageElement) {
                  pageElement.style.display = 'block';
             }
-            setActiveNavLink(navLinkToActivate || currentActiveNavLink); 
-            window.scrollTo(0, 0); // Scroll to top when page changes
+            setActiveNavLink(navLinkToActivate || currentActiveNavLink);
+            window.scrollTo(0, 0);
         }
 
         function showAlert(message, isSuccess = false) {
             alertBox.textContent = message;
             alertBox.style.display = 'block';
-            alertBox.className = isSuccess ? 'alert success' : 'alert'; // Ensure proper class for error
+            alertBox.className = isSuccess ? 'alert success' : 'alert';
             
             setTimeout(() => {
                 alertBox.style.display = 'none';
             }, 3500);
         }
         
+        function addViewAllModulesButton(dashboardElementId, buttonId) {
+            const dashboardDiv = document.getElementById(dashboardElementId);
+            if (dashboardDiv) {
+                const userInfoDiv = dashboardDiv.querySelector('.user-info');
+                if (userInfoDiv) {
+                    let existingButton = document.getElementById(buttonId);
+                    if (!existingButton) {
+                        const button = document.createElement('button');
+                        button.id = buttonId;
+                        button.textContent = '📚 View All Module PDFs';
+                        button.className = 'button-link';
+                        button.style.marginBottom = '25px';
+                        button.style.display = 'block';
+                        button.style.marginLeft = 'auto';
+                        button.style.marginRight = 'auto';
+                        button.style.maxWidth = '300px';
+
+                        userInfoDiv.parentNode.insertBefore(button, userInfoDiv.nextSibling);
+
+                        button.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            populateAllModulesList();
+                            previousPage = dashboardDiv;
+                            showPage(allModulesPage, homeLink);
+                        });
+                    }
+                }
+            }
+        }
+
+        function populateAllModulesList() {
+            moduleGroup1to5List.innerHTML = '';
+            moduleGroup7to11List.innerHTML = '';
+            moduleGroup13to17List.innerHTML = '';
+
+            modulesData.forEach(module => {
+                if (module.pdfPath) {
+                    const listItem = document.createElement('li');
+                    const link = document.createElement('a');
+                    link.href = module.pdfPath;
+                    link.textContent = module.title;
+                    link.target = "_blank";
+                    
+                    const weekNumberMatch = module.id.match(/week(\d+)/);
+                    const weekNumber = weekNumberMatch ? weekNumberMatch[1] : "Module";
+                    // Sanitize title for filename: replace non-alphanumeric with underscore, limit length
+                    const sanitizedTitle = module.title.replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '_').substring(0, 50);
+                    const suggestedFilename = `FILDIS_Week${weekNumber}_${sanitizedTitle}.pdf`;
+                    link.setAttribute('download', suggestedFilename);
+
+                    listItem.appendChild(link);
+
+                    const idParts = module.id.split('_');
+                    const weekStr = idParts[0];
+                    if (weekStr.startsWith('week')) {
+                        const num = parseInt(weekStr.replace('week', ''));
+                        if (num >= 1 && num <= 5) {
+                            moduleGroup1to5List.appendChild(listItem);
+                        } else if (num >= 7 && num <= 11) {
+                            moduleGroup7to11List.appendChild(listItem);
+                        } else if (num >= 13 && num <= 17) {
+                            moduleGroup13to17List.appendChild(listItem);
+                        }
+                    }
+                }
+            });
+        }
+
         function populateModules(gridElement, userRole) {
-            gridElement.innerHTML = ''; 
+            gridElement.innerHTML = '';
             modulesData.forEach(module => {
                 const card = document.createElement('div');
                 card.className = `module-card category-${module.category || 'general'}`;
@@ -1876,10 +2079,9 @@ const users = [
 
                 const description = document.createElement('p');
                 const tempDiv = document.createElement('div');
-                tempDiv.innerHTML = module.description || module.content; // Use description if available, else parse content
+                tempDiv.innerHTML = module.description || module.content;
                 let descText = tempDiv.textContent || tempDiv.innerText || "";
                 description.textContent = descText.substring(0, 120) + (descText.length > 120 ? "..." : "");
-
 
                 const link = document.createElement('a');
                 link.href = '#';
@@ -1901,38 +2103,80 @@ const users = [
             const module = modulesData.find(m => m.id === moduleId);
             if (module) {
                 moduleViewTitle.textContent = module.title;
-                moduleViewContent.innerHTML = module.content; 
+                moduleViewContent.innerHTML = module.content;
                 
                 previousPage = (role === 'student') ? studentDashboard : teacherDashboard;
-                showPage(moduleViewPage, null); 
-                window.scrollTo(0,0); // Scroll to top of module view
+                showPage(moduleViewPage, null);
+                window.scrollTo(0,0);
             }
         }
 
-        function updateNavigation() {
-            if (currentUser) {
-                loginLink.style.display = 'none';
-                logoutLink.style.display = 'block';
-                
-                if (currentUser.role === 'student') {
-                    studentNameSpan.textContent = currentUser.username;
-                    populateModules(studentModulesGrid, 'student');
-                    showPage(studentDashboard, homeLink); 
-                    previousPage = studentDashboard;
-                } else if (currentUser.role === 'teacher') {
-                    teacherNameSpan.textContent = currentUser.username;
-                    populateModules(teacherModulesGrid, 'teacher');
-                    showPage(teacherDashboard, homeLink); 
-                    loadStudentList();
-                    previousPage = teacherDashboard;
-                }
-            } else {
-                loginLink.style.display = 'block';
-                logoutLink.style.display = 'none';
-                showPage(homePage, homeLink);
-                previousPage = homePage;
+        function addViewAllModulesButton(dashboardElementId, buttonId) {
+    const dashboardDiv = document.getElementById(dashboardElementId);
+    if (dashboardDiv) {
+        const userInfoDiv = dashboardDiv.querySelector('.user-info');
+        if (userInfoDiv) {
+            let existingButton = document.getElementById(buttonId);
+            if (!existingButton) { // Add button only if it doesn't exist
+                const button = document.createElement('button');
+                button.id = buttonId;
+                button.textContent = '📚 View All Module PDFs';
+                button.className = 'button-link'; // Use your existing button style
+                button.style.marginBottom = '25px';
+                button.style.display = 'block'; // Make it a block for better centering/spacing
+                button.style.marginLeft = 'auto';
+                button.style.marginRight = 'auto';
+                button.style.maxWidth = '300px'; // Optional: constrain width
+
+                // Insert the button after the user-info div
+                userInfoDiv.parentNode.insertBefore(button, userInfoDiv.nextSibling);
+
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    populateAllModulesList();
+                    previousPage = dashboardDiv; // Set previous page for back button
+                    showPage(allModulesPage, homeLink); // Keep home link active or handle nav differently
+                });
             }
         }
+    }
+}
+
+// REPLACE your existing updateNavigation function with this one:
+function updateNavigation() {
+    if (currentUser) {
+        loginLink.style.display = 'none';
+        logoutLink.style.display = 'block';
+
+        if (currentUser.role === 'student') {
+            studentNameSpan.textContent = currentUser.username;
+            populateModules(studentModulesGrid, 'student');
+            showPage(studentDashboard, homeLink);
+            previousPage = studentDashboard;
+            // *** THIS IS THE CRUCIAL ADDITION/CORRECTION ***
+            addViewAllModulesButton('student-dashboard', 'view-all-modules-student-btn');
+        } else if (currentUser.role === 'teacher') {
+            teacherNameSpan.textContent = currentUser.username;
+            populateModules(teacherModulesGrid, 'teacher');
+            showPage(teacherDashboard, homeLink);
+            loadStudentList();
+            previousPage = teacherDashboard;
+            // *** THIS IS THE CRUCIAL ADDITION/CORRECTION ***
+            addViewAllModulesButton('teacher-dashboard', 'view-all-modules-teacher-btn');
+        }
+    } else {
+        loginLink.style.display = 'block';
+        logoutLink.style.display = 'none';
+        showPage(homePage, homeLink);
+        previousPage = homePage;
+
+        // Remove buttons if they exist when logged out
+        let studentBtn = document.getElementById('view-all-modules-student-btn');
+        if (studentBtn) studentBtn.remove();
+        let teacherBtn = document.getElementById('view-all-modules-teacher-btn');
+        if (teacherBtn) teacherBtn.remove();
+    }
+}
 
         function loadStudentList() {
             studentListBody.innerHTML = '';
@@ -1969,12 +2213,10 @@ const users = [
             });
         }
 
-        // Scroll to top functionality
         window.onscroll = function() {
             if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                scrollToTopButton.style.display = "block";
+                scrollToTopButton.style.display = "flex"; // Changed to flex as per your CSS
                 setTimeout(() => scrollToTopButton.style.opacity = "1", 10);
-
             } else {
                 scrollToTopButton.style.opacity = "0";
                 setTimeout(() => scrollToTopButton.style.display = "none", 300);
@@ -1984,10 +2226,9 @@ const users = [
             window.scrollTo({top: 0, behavior: 'smooth'});
         });
 
-        // Event Listeners
         homeLink.addEventListener('click', (e) => {
             e.preventDefault();
-            updateNavigation(); 
+            updateNavigation();
             setActiveNavLink(homeLink);
         });
         
@@ -1995,7 +2236,6 @@ const users = [
             e.preventDefault();
             showPage(loginPage, loginLink);
         });
-
 
         loginLink.addEventListener('click', (e) => {
             e.preventDefault();
@@ -2013,7 +2253,16 @@ const users = [
         backToDashboardButton.addEventListener('click', (e) => {
             e.preventDefault();
             if (previousPage) {
-                showPage(previousPage, homeLink); 
+                showPage(previousPage, homeLink);
+            } else {
+                updateNavigation();
+            }
+        });
+        
+        backToDashboardFromAllModulesButton.addEventListener('click', (e) => { // New Event Listener
+            e.preventDefault();
+            if (previousPage) {
+                showPage(previousPage, homeLink);
             } else {
                 updateNavigation(); 
             }
@@ -2051,9 +2300,8 @@ const users = [
                 
                 users.push({ username, password, role: 'student', dateRegistered: new Date().toISOString().split('T')[0] });
                 showAlert('Student registered successfully!', true);
-                loadStudentList(); 
+                loadStudentList();
                 registerStudentForm.reset();
-                // Switch to students tab after successful registration
                 document.querySelector('.tab-button[data-tab="students"]').click();
             } else {
                 showAlert('Action not allowed or not logged in as teacher.');
@@ -2073,8 +2321,6 @@ const users = [
             });
         });
 
-        // Initialize
-        updateNavigation(); 
-        setActiveNavLink(homeLink); 
-
+        updateNavigation();
+        setActiveNavLink(homeLink);
     </script>
